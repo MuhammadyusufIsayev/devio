@@ -1,10 +1,10 @@
 const Agency = () => {
   return (
-    <div className="px-[50px] py-[60px] font-montserrat text-center bg-[#fcfcfc]">
-      <h2 className="text-[60px] font-extralight tracking-[.25em]">Devio. Digital agency</h2>
-      <div className="flex justify-around mt-[80px]">
-        <h3 className="text-left w-[23%] text-[36px] font-extrabold">Разработка корпоративного стиля и Создание сайтов в ташкенте</h3>
-        <div className="text-left flex flex-col gap-[30px] w-[50%]">
+    <div className="px-8 py-12 md:px-12 md:py-16 font-montserrat text-center bg-[#fcfcfc]">
+      <h2 className="text-3xl md:text-6xl font-extralight tracking-wider">Devio. Digital agency</h2>
+      <div className="flex flex-col md:flex-row justify-around mt-8 md:mt-20">
+        <h3 className="text-left w-full md:w-1/4 text-2xl md:text-3xl font-extrabold">Разработка корпоративного стиля и Создание сайтов в ташкенте</h3>
+        <div className="text-left flex flex-col gap-4 md:gap-8 w-full md:w-1/2">
           <p>
             Промоакция, вопреки мнению П.Друкера, категорически поддерживает
             культурный поведенческий таргетинг. Потребительская база, не меняя
@@ -22,9 +22,10 @@ const Agency = () => {
           </p>
           <p>
             Продвижение проекта, как принято считать, искажает
-            бизнес-план.Потребительская база, не меняя концепции, изложенной
-            выше, транслирует формирование имиджа. Исходя из структуры пирамиды
-            Маслоу, охват аудитории индуцирует отраслевой стандарт.
+            бизнес-план.Потребительская база, не меняя концепции,
+            изложенной выше, транслирует формирование имиджа. Исходя из
+            структуры пирамиды Маслоу, охват аудитории индуцирует отраслевой
+            стандарт.
           </p>
         </div>
       </div>

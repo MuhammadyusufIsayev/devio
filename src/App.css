@@ -9,3 +9,18 @@
 .header{
     background-image: url(./assets/images/banner1.png);
 }
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  button {
+    background: none;
+    cursor: pointer;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  

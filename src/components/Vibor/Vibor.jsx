@@ -16,17 +16,19 @@ const Vibor = () => {
   ];
 
   return (
-    <div className="px-[50px] py-[60px] font-montserrat bg-[#fcfcfc]">
-      <h2 className="text-[60px] font-extralight tracking-[.25em] mb-10 text-center">Они выбрали нас</h2>
-      <div className="grid grid-cols-2 gap-8 mt-8">
+    <div className="px-4 md:px-8 lg:px-16 py-16 font-montserrat bg-[#fcfcfc]">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-extralight tracking-wide mb-10 text-center">
+        Они выбрали нас
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mt-8">
         {images.map((item) => (
           <div
             key={item.id}
-            className="group relative border w-[710px] bg-cover bg-center h-[350px] flex items-center justify-center"
+            className="group relative border bg-cover bg-center h-56 md:h-72 lg:h-80 flex items-center justify-center"
             style={{ backgroundImage: `url(${item.image})` }}
           >
             <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-opacity duration-300"></div>
-            <button className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-black font-bold py-2 px-4 rounded z-10">
+            <button className="absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white text-black font-bold py-2 px-4 rounded z-10">
               Смотреть проект
             </button>
           </div>

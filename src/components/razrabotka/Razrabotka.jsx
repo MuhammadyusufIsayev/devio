@@ -1,133 +1,125 @@
+import { useState } from "react";
 import { GrStatusGood } from "react-icons/gr";
 
 const Razrabotka = () => {
+  const [open, setOpen] = useState(null);
+
+  const handleToggle = (index) => {
+    setOpen(open === index ? null : index);
+  };
+
+  const plans = [
+    {
+      title: "Экспресс",
+      duration: "1-3 дня",
+      price: "1-3 млн сум",
+      features: [
+        "Дизайн-шаблон",
+        "Административная панель",
+        "Две языковые версии сайта",
+        "Наполнение",
+        "Обучение управлению сайтом",
+        "Доменное имя и хостинг в подарок",
+      ],
+      description: [
+        "Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.",
+        "Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.",
+      ],
+      buttonText: "Заказать",
+      style: "bg-white",
+    },
+    {
+      title: "Экспресс +",
+      duration: "7-10 дней",
+      price: "5 млн сум",
+      features: [
+        "Разработка логотипа",
+        "Дизайн-шаблон с индивидуализацией",
+        "Административная панель",
+        "Две языковые версии сайта",
+        "Наполнение",
+        "Обучение управлению сайтом",
+        "Доменное имя и хостинг в подарок",
+      ],
+      description: [
+        "Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.",
+        "Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.",
+      ],
+      buttonText: "Заказать",
+      style: "bg-white",
+    },
+    {
+      title: "Премиум",
+      duration: "до 30 дней",
+      price: "8-12 млн",
+      features: [
+        "Разработка корпоративного стиля",
+        "Дизайн-шаблон",
+        "Административная панель",
+        "Разработка мобильных макетов сайта",
+        "языковые версии сайта без ограничений",
+        "Наполнение",
+        "Обучение управлению сайтом",
+        "Доменное имя и хостинг в подарок",
+      ],
+      description: [
+        "Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.",
+        "Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.",
+      ],
+      buttonText: "Заказать",
+      style: "bg-gradient-to-b from-yellow-300 to-cyan-300",
+    },
+  ];
+
   return (
-    <div className="px-[50px] py-[60px] font-montserrat bg-[#fcfcfc]">
-      <h2 className="text-[60px] font-extralight tracking-[.25em] mb-16 text-center">Сколько стоит разработка?</h2>
-      <div className="flex justify-center gap-[100px]">
-        <div className="flex flex-col gap-[40px] w-[320px] h-[100%] shadow-lg bg-white p-[40px] rounded-2xl">
-            <div className="flex flex-col gap-[82px] border-b-[2px] border-dotted border-[#000] pb-[40px] ">
-                <h3 className="text-[18px] font-[800]">Экспресс</h3>
+    <div className="px-12 py-16 font-montserrat bg-gray-50">
+      <h2 className="text-4xl md:text-6xl font-extralight tracking-wider mb-16 text-center">
+        Сколько стоит разработка?
+      </h2>
+      <div className="space-y-8 md:space-y-0 md:flex md:justify-center md:gap-24">
+        {plans.map((plan, index) => (
+          <div
+            key={index}
+            className={`flex flex-col gap-8 w-full md:w-80 shadow-lg ${plan.style} p-10 rounded-2xl h-full`}
+          >
+            <div
+              className="md:border-b-2 border-dotted border-black pb-10 cursor-pointer"
+              onClick={() => handleToggle(index)}
+            >
+              <h3 className="text-lg md:text-2xl font-bold">{plan.title}</h3>
+              <div className="flex justify-between items-center">
                 <div>
-                    <p className="text-[24px]">1-3 дня</p>
-                    <p className="text-[24px] font-[700]">1-3 млн сум</p>
+                  <p className="text-2xl">{plan.duration}</p>
+                  <p className="text-2xl font-bold">{plan.price}</p>
                 </div>
+                <div className="md:hidden">
+                  {open === index ? "-" : "+"}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col gap-[40px] ">
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/> Дизайн-шаблон</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
+            <div
+              className={`${
+                open === index ? "block" : "hidden"
+              } md:block transition-all duration-300`}
+            >
+              {plan.features.map((feature, idx) => (
+                <div key={idx} className="mb-6">
+                  <h4 className="font-semibold flex items-center gap-2 mb-2">
+                    <GrStatusGood className="text-xl" />
+                    {feature}
+                  </h4>
+                  <p>{plan.description[0]}</p>
                 </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Административная панель</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Две языковые версии сайта</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Наполнение</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Обучение управлению сайтом</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Доменное имя и хостинг в подарок</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <button className="bg-white rounded-full h-[40px] w-full text-[#000] font-[800] px-[20px] border-[1px] border-[#000]">Заказать</button>
+              ))}
+              <button className="bg-white rounded-full h-10 w-full text-black font-bold px-4 border border-black">
+                {plan.buttonText}
+              </button>
             </div>
-        </div>
-        <div className="flex flex-col gap-[40px] w-[320px] h-[100%] shadow-lg bg-white p-[40px] rounded-2xl">
-            <div className="flex flex-col gap-[82px] border-b-[2px] border-dotted border-[#000] pb-[40px] ">
-                <h3 className="text-[18px] font-[800]">Экспресс +</h3>
-                <div>
-                    <p className="text-[24px]">7-10 дней</p>
-                    <p className="text-[24px] font-[700]">5 млн сум</p>
-                </div>
-            </div>
-            <div className="flex flex-col gap-[40px] ">
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/> Разработка логотипа</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/> Дизайн-шаблон с индивидуализацией</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Административная панель</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Две языковые версии сайта</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Наполнение</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Обучение управлению сайтом</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Доменное имя и хостинг в подарок</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <button className="bg-white rounded-full h-[40px] w-full text-[#000] font-[800] px-[20px] border-[1px] border-[#000]">Заказать</button>
-            </div>
-        </div>
-        <div className="flex flex-col gap-[40px] w-[320px] h-[100%] shadow-lg bg-gradient-to-b from-[#FFF96A] to-[#9DFFFF] p-[40px] rounded-2xl">
-            <div className="flex flex-col gap-[82px] border-b-[2px] border-dotted border-[#000] pb-[40px] ">
-                <h3 className="text-[18px] font-[800]">Премиум</h3>
-                <div>
-                    <p className="text-[24px]">до 30 дней</p>
-                    <p className="text-[24px] font-[700]">8-12 млн</p>
-                </div>
-            </div>
-            <div className="flex flex-col gap-[40px] ">
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Разработка корпоративного стиля</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/> Дизайн-шаблон</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Административная панель</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Разработка мобильных макетов сайта</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>языковые версии сайта без ограничений</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Наполнение</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Обучение управлению сайтом</h4>
-                    <p>Исходя из структуры пирами Маслоу, охват аудитории индуцирует отраслевой стандарт.</p>
-                </div>
-                <div>
-                    <h4 className="font-[600] flex items-center gap-[8px] mb-[10px]"><GrStatusGood className="text-[20px]"/>Доменное имя и хостинг в подарок</h4>
-                    <p>Текстами рефератов можно пользоваться совершенно бесплатно, однако при транслировании и предоставлении.</p>
-                </div>
-                <button className="bg-black rounded-full h-[40px] w-full text-[#fff] font-[800] px-[20px]">Заказать</button>
-            </div>
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default Razrabotka;
